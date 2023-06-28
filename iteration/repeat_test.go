@@ -1,6 +1,9 @@
 package iteration
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestRepeat(t *testing.T) {
 	t.Run("Repeat 'a' five times", func(t *testing.T) {
@@ -21,4 +24,28 @@ func assertCorrectMessage(t testing.TB, got, want string) {
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
 	}
+}
+
+func BenchmarkRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Repeat("a", 5)
+	}
+}
+
+func BenchmarkBuiltInRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		BuiltInRepeat("a", 5)
+	}
+}
+
+func ExampleRepeat() {
+	repeated := Repeat("a", 5)
+	fmt.Println(repeated)
+	// Output: aaaaa
+}
+
+func ExampleBuiltInRepeat() {
+	repeated := BuiltInRepeat("a", 5)
+	fmt.Println(repeated)
+	// Output: aaaaa
 }
