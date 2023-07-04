@@ -7,4 +7,5 @@ go test -bench=.
 go test -cover
 errcheck ./...
 errcheck all
+go test -race
 ```
