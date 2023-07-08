@@ -8,4 +8,5 @@ go test -cover
 errcheck ./...
 errcheck all
 go test -race
+go vet
 ```
